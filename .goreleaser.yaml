@@ -1,0 +1,43 @@
+version: 2
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w -X main.version={{.Version}}
+
+archives:
+  - format: tar.gz
+    name_template: "git-pr_{{ .Os }}_{{ .Arch }}"
+
+brews:
+  - name: git-pr
+    repository:
+      owner: evanyang0612
+      name: homebrew-tap
+    directory: Formula
+    homepage: "https://github.com/evanyang0612/git-pr"
+    description: "AI-powered PR title and description generator"
+    license: "MIT"
+    dependencies:
+      - name: gh
+    test: |
+      assert_match "AI-powered PR generator", shell_output("#{bin}/git-pr --help")
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^chore:"
