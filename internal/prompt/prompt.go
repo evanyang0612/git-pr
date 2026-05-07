@@ -66,6 +66,11 @@ func Build(info *git.Info, context string) string {
 
 	template := LoadTemplate()
 
+	example := "- **`library/reservation_service.py`** — New `ReservationService` with:\n" +
+		"  - `create(scheduled_at, payload)` — persists a reservation and registers an `at()` schedule in EventBridge targeting the Lambda handler\n" +
+		"  - `get(reservation_id)` — retrieves by ID; raises `NotFoundException` if missing\n" +
+		"  - `cancel(reservation_id)` — only allowed in `PENDING` status; deletes the schedule and transitions to `CANCELLED`"
+
 	contextBlock := ""
 	if strings.TrimSpace(context) != "" {
 		contextBlock = fmt.Sprintf(`## Additional Context (spec / ticket / notes)
@@ -111,10 +116,7 @@ Use the following PR template structure exactly. Replace each {{placeholder}} wi
 - **Others**: Important implementation decisions, constraints, gotchas. Only write N/A if genuinely nothing to add.
 
 ### Example quality for "What":
-- **`library/reservation_service.py`** — New `ReservationService` with:
-  - `create(scheduled_at, payload)` — persists a reservation and registers an `at()` schedule in EventBridge targeting the Lambda handler
-  - `get(reservation_id)` — retrieves by ID; raises `NotFoundException` if missing
-  - `cancel(reservation_id)` — only allowed in `PENDING` status; deletes the schedule and transitions to `CANCELLED`
+%s
 
 ## Output Format
 Respond ONLY with valid JSON. No extra text, no markdown fences:
@@ -127,5 +129,6 @@ Respond ONLY with valid JSON. No extra text, no markdown fences:
 		info.FullDiff,
 		contextBlock,
 		template,
+		example,
 	)
 }
