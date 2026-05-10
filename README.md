@@ -33,6 +33,7 @@ git pr config --base develop
 ```
 
 API keys can also be set via environment variables:
+
 ```bash
 export ANTHROPIC_API_KEY=sk-ant-...
 export OPENAI_API_KEY=sk-...
@@ -48,6 +49,7 @@ git pr develop    # use develop as base instead of main
 ```
 
 **Interactive menu after generation:**
+
 ```
 [1] 🚀 Push + create PR
 [2] ✏️  Edit then create PR
@@ -62,15 +64,19 @@ Create a `.git-pr.md` in your repo root to define your team's PR format:
 
 ```markdown
 ## Why
+
 {{why}}
 
 ## What
+
 {{what}}
 
 ## Review deadline
+
 _Please review by: _
 
 ## Others
+
 {{others}}
 ```
 
@@ -88,6 +94,7 @@ base_branch: main
 ```
 
 View current config:
+
 ```bash
 git pr config
 ```
@@ -100,3 +107,7 @@ git pr config
 ## License
 
 MIT
+
+## TEST
+
+hello
