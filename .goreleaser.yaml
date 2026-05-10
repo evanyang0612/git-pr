@@ -23,6 +23,7 @@ archives:
 
 homebrew_casks:
   - name: git-pr
+    github_token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
     repository:
       owner: evanyang0612
       name: homebrew-tap
