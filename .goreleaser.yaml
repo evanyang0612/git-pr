@@ -23,10 +23,10 @@ archives:
 
 homebrew_casks:
   - name: git-pr
-    github_token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
     repository:
       owner: evanyang0612
       name: homebrew-tap
+      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
     directory: Formula
     homepage: "https://github.com/evanyang0612/git-pr"
     description: "AI-powered PR title and description generator"
