@@ -30,10 +30,6 @@ homebrew_casks:
     homepage: "https://github.com/evanyang0612/git-pr"
     description: "AI-powered PR title and description generator"
     license: "MIT"
-    dependencies:
-      - name: gh
-    test: |
-      assert_match "AI-powered PR generator", shell_output("#{bin}/git-pr --help")
 
 changelog:
   sort: asc
