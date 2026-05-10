@@ -21,7 +21,7 @@ archives:
       - tar.gz
     name_template: "git-pr_{{ .Os }}_{{ .Arch }}"
 
-homebrew_casks:
+brews:
   - name: git-pr
     repository:
       owner: evanyang0612
